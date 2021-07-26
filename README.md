@@ -8,3 +8,10 @@ the folders
         - randomNum
         - flipNHeads
         - clock
+- basiclibrary
+     - Library
+        - main
+        - roll
+        - containsDuplicates
+        - getAverage
+        - getLowestAverage
