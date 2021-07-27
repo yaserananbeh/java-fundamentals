@@ -3,6 +3,8 @@
  */
 package basiclibrary;
 
+import java.util.*;
+
 public class Library {
     public boolean someLibraryMethod() {
         return true;
@@ -12,10 +14,7 @@ public class Library {
         //calling the first function and printing the acceptedArray
 
         System.out.println("------- First func --------------");
-        int [] acceptedArr=roll(3); //saving the return value in a new array to print it
-        for (int i = 0; i < acceptedArr.length; i++) {
-            System.out.println(acceptedArr[i]);
-        }
+        System.out.println(Arrays.toString(roll(3)));
         System.out.println("------------------------------");
 
         //calling the second function and printing the return value
@@ -37,10 +36,30 @@ public class Library {
                 {65, 56, 55, 52, 55, 62, 57}
         };
         System.out.println("The Lowest average array ");
-        int [] newArrfunc4=getLowestAverage(func4Arr);
-        for (int i = 0; i < newArrfunc4.length; i++) {
-            System.out.println(newArrfunc4[i]);
-        }
+        System.out.println(Arrays.toString(getLowestAverage(func4Arr)));
+        System.out.println("------------------------------");
+        System.out.println("------ Fifth func -------------");
+        int[][] weeklyMonthTemperatures = {
+                {66, 64, 58, 65, 71, 57, 60},
+                {57, 65, 65, 70, 72, 65, 51},
+                {55, 54, 60, 53, 59, 57, 61},
+                {65, 56, 55, 52, 55, 62, 57}
+        };
+        System.out.println(Arrays.toString(lowHighTemp(weeklyMonthTemperatures)));
+
+        System.out.println("------------------------------");
+        System.out.println("------ Sixth func -------------");
+        List<String> votes = new ArrayList<>();
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Shrub");
+        votes.add("Hedge");
+        votes.add("Hedge");
+        votes.add("Shrub");
+        votes.add("Hedge");
+        System.out.println(tally(votes) + " received the most votes!");
         System.out.println("------------------------------");
 
     }
@@ -95,5 +114,58 @@ public class Library {
         }
         return lowestAvgArr;
 
+    }
+    public static String[] lowHighTemp(int [][] arr){
+        int min=arr[0][0];
+        int max=arr[0][0];
+        ArrayList<String> finalArray=new ArrayList<String>();
+        HashSet<Integer> seenTemp=new HashSet<Integer>();
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                seenTemp.add(arr[i][j]);
+                if(arr[i][j]>max){
+                    max =arr[i][j];
+                }
+                if(arr[i][j]<min){
+                    min=arr[i][j];
+                }
+            }
+        }
+        finalArray.add("High: "+max);
+        finalArray.add("Low: "+min);
+        for (int i = min; i < max; i++) {
+            if (!seenTemp.contains(i)) {
+                finalArray.add("Never saw temperature: " + i);
+            }
+        }
+        String [] finalArr=new String[finalArray.size()];
+        for (int i = 0; i < finalArray.size(); i++) {
+            finalArr[i]=finalArray.get(i);
+        }
+        return finalArr;
+    }
+    public static String tally(List<String> votes ){
+        HashMap<String,Integer> lastResults=new HashMap<String,Integer>();
+
+        for (String item :
+                votes) {
+            if(!lastResults.containsKey(item)){
+                lastResults.put(item,1);
+            }
+            else {
+                lastResults.put(item,lastResults.get(item)+1);
+            }
+        }
+        int maxVotes=0;
+        String winner="";
+        for (String value :
+                lastResults.keySet()) {
+            if(lastResults.get(value)>maxVotes){
+                maxVotes=lastResults.get(value);
+                winner=value;
+            }
+        }
+//        System.out.println(winner);
+        return winner;
     }
 }

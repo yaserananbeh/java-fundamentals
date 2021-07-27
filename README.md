@@ -15,3 +15,12 @@ the folders
         - containsDuplicates
         - getAverage
         - getLowestAverage
+        - Analyzing Weather Data
+        - Tallying Election
+        
+- linter
+     - linter
+        - main
+        - errors
+        
+        
