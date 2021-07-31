@@ -12,23 +12,53 @@ import static linter.App.errors;
 import static org.junit.jupiter.api.Assertions.*;
 
 class AppTest {
-    @Test
-    void appHasAGreeting() {
-        App classUnderTest = new App();
-        assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
-    }
 
     @Test
-    void linterWork() {
+    void testNoError() {
+        ArrayList<String> recievedArray = errors("./src/main/resources/noError.js");
+        ArrayList<String> expectedArray = new ArrayList<String>();
+        assertEquals(
+                recievedArray, expectedArray);
+    }
+    @Test
+    void testOneError() {
+        ArrayList<String> recievedArray = errors("./src/main/resources/oneError.js");
+        ArrayList<String> expectedArray = new ArrayList<String>();
+        expectedArray.add("Line 4: Missing semicolon.");
+        assertEquals(
+                recievedArray, expectedArray);
+    }
+    @Test
+    void testfewError() {
         ArrayList<String> recievedArray = errors("./src/main/resources/yaserTest.js");
         ArrayList<String> expectedArray = new ArrayList<String>();
         expectedArray.add("Line 3: Missing semicolon.");
         expectedArray.add("Line 5: Missing semicolon.");
         expectedArray.add("Line 9: Missing semicolon.");
+        assertEquals(
+                recievedArray, expectedArray);
+    }
+    @Test
+    void testManyError() {
+        ArrayList<String> recievedArray = errors("./src/main/resources/manyErrors.js");
+        ArrayList<String> expectedArray = new ArrayList<String>();
+        expectedArray.add("Line 3: Missing semicolon.");
+        expectedArray.add("Line 5: Missing semicolon.");
+        expectedArray.add("Line 11: Missing semicolon.");
+        expectedArray.add("Line 13: Missing semicolon.");
+        expectedArray.add("Line 15: Missing semicolon.");
+        expectedArray.add("Line 26: Missing semicolon.");
+        expectedArray.add("Line 28: Missing semicolon.");
+        expectedArray.add("Line 32: Missing semicolon.");
 
         assertEquals(
                 recievedArray, expectedArray);
-
-
+    }
+    @Test
+    void testEmptyFile() {
+        ArrayList<String> recievedArray = errors("./src/main/resources/emptyFile.js");
+        ArrayList<String> expectedArray = new ArrayList<String>();
+        assertEquals(
+                recievedArray, expectedArray);
     }
 }

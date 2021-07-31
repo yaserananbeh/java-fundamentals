@@ -20,7 +20,7 @@ public class Library {
         //calling the second function and printing the return value
         // that will be a true if there's a duplicating inside the sent array otherwise the value will be false
         System.out.println("-------- Second func ---------");
-        int [] sentArr={1,2,6,5,6};
+        int [] sentArr={1,2,6,3,2,1,1,11};
         System.out.println("Is there any duplicate inside the provided array ? the answer is: "+containsDuplicates(sentArr));
         System.out.println("------------------------------");
 
@@ -74,18 +74,16 @@ public class Library {
         return arr;
     }
     public static boolean containsDuplicates(int [] arr){
-        boolean value=false;
         for (int i = 0; i < arr.length; i++) {
-            int element=arr[i];
-            for (int j = 0; j < arr.length-arr[i] ; j++) {
-                if(arr[j]==element){
-                    value=false;
-                }else {
-                    value=true;
+            for (int j = 0; j < arr.length; j++) {
+                if (i != j) {
+                    if (arr[i] == arr[j]) {
+                        return true;
+                    }
                 }
             }
         }
-        return value;
+        return false;
     }
     public static double getAverage(int [] arr){
         double avg=0;
