@@ -3,7 +3,6 @@
  */
 package inheritance;
 
-import org.checkerframework.checker.units.qual.A;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -15,7 +14,7 @@ class LibraryTest {
     void testInstanceOfRestaurant() {
         System.out.println("test 1 SUCCESS");
         Restaurant McDonald = new Restaurant();
-        McDonald.setName("McDonald"); // the name of the resturant
+        McDonald.setName("McDonald"); // the name of the restaurant
         McDonald.setStars(0); //default stars start from zero
         McDonald.setPrice(2);
         String expected = "Restaurant{name='McDonald', stars=0.0, price='$$', reviews=[]}";
@@ -49,7 +48,7 @@ class LibraryTest {
     }
 
     @Test
-    void testSetReviewForEachResturent() {
+    void testSetReviewForEachRestaurant() {
         System.out.println("test 4 SUCCESS");
         Restaurant shawermaji = new Restaurant();
         shawermaji.setName("shawermaji");
@@ -65,12 +64,12 @@ class LibraryTest {
         maker.setReviews("khalid", "great service", 5);
 
 
-        ArrayList<String> expected1 = new ArrayList<String>();
+        ArrayList<String> expected1 = new ArrayList<>();
         expected1.add("yaser");
         expected1.add("bad service");
         expected1.add("0");
         assertEquals(expected1, shawermaji.getReviews());
-        ArrayList<String> expected2 = new ArrayList<String>();
+        ArrayList<String> expected2 = new ArrayList<>();
         expected2.add("khalid");
         expected2.add("great service");
         expected2.add("5");
@@ -90,5 +89,66 @@ class LibraryTest {
         shawermaji.setReviews("mohammad", "great service", 1);
         double expected = 2.0;
         assertEquals(expected, shawermaji.getStars());
+    }
+
+    @Test
+    void testShop() {
+        System.out.println("test 6 SUCCESS");
+        Shop shop1 = new Shop();
+        shop1.setName("H&M");
+        shop1.setStars(0);
+        shop1.setPrice(5);
+        shop1.setDescription("Fashion Store");
+
+        shop1.setReviews("yaser", "great but very expensive", 3);
+        String expected = "Shop{name='H&M', stars=3.0, price='$$$$$', description='Fashion Store', reviews=[yaser, " +
+                "great but very expensive, 3]}";
+        assertEquals(expected, shop1.toString());
+    }
+
+    @Test
+    void testTheater() {
+        System.out.println("test 7 SUCCESS");
+        Theater theater1 = new Theater();
+        theater1.setName("Prime");
+        theater1.setStars(0);
+
+        theater1.setMovie("fast7");
+        theater1.setMovie("transporter");
+        String expected = "Theater{name='Prime', stars=0.0, movies=[fast7, transporter], reviews=[]}";
+        assertEquals(expected, theater1.toString());
+    }
+
+    @Test
+    void testTheaterReviewable() {
+        System.out.println("test 8 SUCCESS");
+        Theater theater1 = new Theater();
+        theater1.setName("Prime");
+        theater1.setStars(0);
+
+        theater1.setReviews("yaser", "great but very expensive", 0);
+        theater1.setReviews("khalid", "great but very expensive", 5);
+        theater1.setMovie("fast7");
+        theater1.setMovie("transporter");
+        String expected = "Theater{name='Prime', stars=2.5, movies=[fast7, transporter], reviews=[yaser, great but " +
+                "very expensive, 0, khalid, great but very expensive, 5]}";
+        assertEquals(expected, theater1.toString());
+    }
+
+    @Test
+    void testAddMovieRemoveMovieFromTheater() {
+        System.out.println("test 9 SUCCESS");
+        Theater theater1 = new Theater();
+        theater1.setName("Prime");
+        theater1.setStars(0);
+
+        theater1.setMovie("fast7");
+        theater1.setMovie("test");
+        theater1.setMovie("Avengers");
+        theater1.setMovie("transporter");
+
+        theater1.removeMovie("test");
+        String expected = "Theater{name='Prime', stars=0.0, movies=[fast7, Avengers, transporter], reviews=[]}";
+        assertEquals(expected, theater1.toString());
     }
 }

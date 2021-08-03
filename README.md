@@ -28,3 +28,6 @@ the folders
         - main
             - Restaurant       
             - Review       
+            - Shop       
+            - Theater
+               - Movies       

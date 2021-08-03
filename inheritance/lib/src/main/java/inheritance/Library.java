@@ -5,13 +5,11 @@ package inheritance;
 
 
 public class Library {
-    public boolean someLibraryMethod() {
-        return true;
-    }
+
 
     public static void main(String[] args) {
         Restaurant McDonald=new Restaurant();
-        McDonald.setName("McDonald"); // the name of the resturant
+        McDonald.setName("McDonald"); // the name of the Restaurant
         McDonald.setStars(0); //default stars start from zero
         McDonald.setPrice(2);// EACH NUMBER BELOW THE 0 WILL CONSIDER AS A ONE $ AND THE NUMBERS ABOVE 5 WILL
         // CONSIDER AS A FIVE DOLLARS
@@ -21,6 +19,28 @@ public class Library {
         McDonald.setReviews("khalid","bad service",5);
         McDonald.setReviews("mohammad","bad service",5);
         System.out.println(McDonald);
+//        -----------------------------------------------------
+//        ---------------------lab07----------------------------
+//        -----------------------------------------------------
+        Shop shop1=new Shop();
+        shop1.setName("shop1");
+        shop1.setDescription("this shop to sell products");
+        shop1.setPrice(50);
+        System.out.println("----------------------------------------");
+        System.out.println("----------------------------------------");
+        shop1.setReviews("yaser","good service",5);
+        shop1.setReviews("Khalid","bad service",0);
+        System.out.println(shop1);
+        System.out.println("----------------------------------------");
+        Theater theater=new Theater();
+        theater.setName("Theater1");
+        theater.setMovie("Fast&furious7");
+        theater.setMovie("Avengers");
+        theater.setMovie("test");
+        theater.removeMovie("test");
+        theater.setReviews("Khalid","This movie is awful don't watch it",0,"fast&ferrous");
+        theater.setReviews("yaser","very comfortable I will come here every weekend",5);
 
+        System.out.println(theater);
     }
 }
