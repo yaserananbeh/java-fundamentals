@@ -10,11 +10,11 @@ public class Theater {
 
     private double SumOfStars;
 
-    private final ArrayList<String> reviews =new ArrayList<>();
+    private final ArrayList<Object> reviews =new ArrayList<>();
 
     private final ArrayList<String> movies=new ArrayList<>();
 
-    public ArrayList<String> getReviews() {
+    public ArrayList<Object> getReviews() {
         return reviews;
     }
 
@@ -33,15 +33,17 @@ public class Theater {
         String numOfStarsToString=String.valueOf(numOfStars);
         oneReview.setNumOfStars(numOfStarsToString);
 
-        reviews.add(oneReview.getAuthor());
-        reviews.add(oneReview.getBody());
-        reviews.add(oneReview.getNumOfStars());
+        ArrayList <String> oneReviewContent=new ArrayList<>();
 
+        oneReviewContent.add(oneReview.getAuthor());
+        oneReviewContent.add(oneReview.getBody());
+        oneReviewContent.add(oneReview.getNumOfStars());
+
+        reviews.add(oneReviewContent);
 
         double sum=getSumOfStars()+numOfStars; //add the new num to the last sum
         setSumOfStars(sum); //set the sum of the stars
-        double star=getSumOfStars()/(float)(reviews.size()/3);
-        // divided by three because every review add three element in the reviews array
+        double star=getSumOfStars()/(reviews.size());
         setStars(round(star, 2));
         return "";
     }

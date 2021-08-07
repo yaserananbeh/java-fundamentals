@@ -10,9 +10,9 @@ public class Restaurant {
     private double stars;
     private String price;
     private double SumOfStars;
-    private ArrayList<String> reviews =new ArrayList<String>();
+    private ArrayList<Object> reviews =new ArrayList<Object>();
 
-    public ArrayList<String> getReviews() {
+    public ArrayList<Object> getReviews() {
         return reviews;
     }
     public String setReviews(String author,String body,int numOfStars) {
@@ -30,16 +30,17 @@ public class Restaurant {
 
         String numOfStarsToString=String.valueOf(numOfStars);
         oneReview.setNumOfStars(numOfStarsToString);
+        ArrayList <String> oneReviewContent=new ArrayList<>();
 
-        reviews.add(oneReview.getAuthor());
-        reviews.add(oneReview.getBody());
-        reviews.add(oneReview.getNumOfStars());
+        oneReviewContent.add(oneReview.getAuthor());
+        oneReviewContent.add(oneReview.getBody());
+        oneReviewContent.add(oneReview.getNumOfStars());
 
+        reviews.add(oneReviewContent);
 
         double sum=getSumOfStars()+numOfStars; //add the new num to the last sum
         setSumOfStars(sum); //set the sum of the stars
-        double star=getSumOfStars()/(reviews.size()/3);
-        // divided by three because every review add three element in the reviews array
+        double star=getSumOfStars()/(reviews.size());
         setStars(round(star, 2));
         return "";
     }

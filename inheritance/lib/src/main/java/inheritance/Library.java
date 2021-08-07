@@ -9,15 +9,15 @@ public class Library {
 
     public static void main(String[] args) {
         Restaurant McDonald=new Restaurant();
-        McDonald.setName("McDonald"); // the name of the Restaurant
+        McDonald.setName("McDonald"); // the name of the restaurant
         McDonald.setStars(0); //default stars start from zero
         McDonald.setPrice(2);// EACH NUMBER BELOW THE 0 WILL CONSIDER AS A ONE $ AND THE NUMBERS ABOVE 5 WILL
         // CONSIDER AS A FIVE DOLLARS
 
-        // NOTE IF YOU ADD TWO REVIEW WITH THE SAME OF AUTHOR THE FUNCTION WILL NOT EDIT THE RATE FOR THE RESTAURANT
         McDonald.setReviews("khalid","bad service",0);
-        McDonald.setReviews("khalid","bad service",5);
-        McDonald.setReviews("mohammad","bad service",5);
+        McDonald.setReviews("mohammad","good service",5);
+        McDonald.setReviews("sameer","great service",5);
+
         System.out.println(McDonald);
 //        -----------------------------------------------------
 //        ---------------------lab07----------------------------
